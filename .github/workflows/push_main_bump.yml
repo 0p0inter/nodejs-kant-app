@@ -1,0 +1,38 @@
+name: 'Bump version for NodeJS'
+
+on:
+  workflow_call:
+    outputs:
+      NEW_TAG:
+        description: "New generated tag"
+        value: ${{ jobs.bump-version.outputs.NEW_TAG }}
+
+jobs:
+  bump-version:
+    name: 'Bump version on main branch'
+    runs-on: ubuntu-latest
+    outputs:
+      NEW_TAG: ${{ steps.outputStep.outputs.NEW_TAG }}
+    steps:
+      - name: 'Source code checkout'
+        uses: 'actions/checkout@v2'
+        with:
+          ref: ${{ github.ref }}
+      - name: 'cat package.json'
+        run: cat ./package.json
+      - name: 'Automated Bump'
+        id: version-bump
+        uses: 'phips28/gh-action-bump-version@master'
+        with:
+          tag-prefix: 'v'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: 'cat package.json'
+        run: cat ./package.json
+      - name: 'Output Step'
+        id: 'outputStep'
+        env:
+          NEW_TAG: ${{ steps.version-bump.outputs.newTag }}
+        run: |
+          echo "new tag $NEW_TAG"
+          echo "::set-output name=NEW_TAG::$NEW_TAG"
