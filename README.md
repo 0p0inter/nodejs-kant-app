@@ -21,7 +21,7 @@ docker-compose up
 
 #### Start minikube with adjustment parameters for HPA
 ```
-minikube start --network-plugin=cni --cni=calico ** minikube start --network-plugin=cni --cni=calico --extra-config=controller-manager.horizontal-pod-autoscaler-upscale-delay=1m --extra-config=controller-manager.horizontal-pod-autoscaler-downscale-delay=1m --extra-config=controller-manager.horizontal-pod-autoscaler-sync-period=10s --extra-config=controller-manager.horizontal-pod-autoscaler-downscale-stabilization=1m
+minikube start --network-plugin=cni --cni=calico --extra-config=controller-manager.horizontal-pod-autoscaler-upscale-delay=1m --extra-config=controller-manager.horizontal-pod-autoscaler-downscale-delay=1m --extra-config=controller-manager.horizontal-pod-autoscaler-sync-period=10s --extra-config=controller-manager.horizontal-pod-autoscaler-downscale-stabilization=1m
 ```
 
 #### Enable metrics server
