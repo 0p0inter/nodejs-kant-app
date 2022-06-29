@@ -1,6 +1,6 @@
 {
   "name": "nodejs-kant-app",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A sample nodejs app to display request information",
   "main": "index.js",
   "scripts": {
