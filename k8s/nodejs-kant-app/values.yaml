@@ -2,7 +2,7 @@ replicaCount: 1
 image:
   repository: 0p0inter/nodejs-kant-app
   pullPolicy: IfNotPresent
-  tag: "v1.0.4"
+  tag: "v1.0.5"
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
